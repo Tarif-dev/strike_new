@@ -9,6 +9,7 @@ import {
   Winner, InsertWinner
 } from "@shared/schema";
 import session from "express-session";
+import { Store as SessionStore } from "express-session";
 import createMemoryStore from "memorystore";
 
 const MemoryStore = createMemoryStore(session);
@@ -64,7 +65,7 @@ export interface IStorage {
   createWinner(winner: InsertWinner): Promise<Winner>;
   
   // Session store
-  sessionStore: session.SessionStore;
+  sessionStore: SessionStore;
 }
 
 export class MemStorage implements IStorage {
@@ -86,7 +87,7 @@ export class MemStorage implements IStorage {
   currentContestEntryId: number;
   currentWinnerId: number;
   
-  sessionStore: session.SessionStore;
+  sessionStore: SessionStore;
 
   constructor() {
     // Initialize maps for in-memory storage
