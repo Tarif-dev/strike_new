@@ -1,6 +1,10 @@
+import { useState } from "react";
 import { Match } from "@shared/schema";
 import { getTimeRemaining, formatCurrency, formatPercentage } from "@/lib/utils";
 import { useLocation } from "wouter";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import MatchStats from "@/components/match/match-stats";
+import { InfoIcon } from "lucide-react";
 
 interface MatchCardProps {
   match: Match;
