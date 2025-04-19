@@ -37,11 +37,11 @@ export default function Header() {
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <div className="flex items-center">
           <img 
-            src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?ixlib=rb-1.2.1&auto=format&fit=crop&w=50&h=50&q=80" 
-            alt="Dream 11 Logo" 
+            src="https://images.unsplash.com/photo-1639085371834-e88da942635b?ixlib=rb-1.2.1&auto=format&fit=crop&w=50&h=50&q=80" 
+            alt="Cricket11 Logo" 
             className="h-8 mr-2 rounded" 
           />
-          <h1 className="text-xl font-['Roboto_Condensed'] font-bold">Dream11</h1>
+          <h1 className="text-xl font-['Roboto_Condensed'] font-bold">Cricket11</h1>
         </div>
         
         <div className="flex items-center space-x-4">

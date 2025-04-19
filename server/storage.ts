@@ -445,10 +445,40 @@ export class MemStorage implements IStorage {
       team2Code: "DC",
       team1Logo: "https://images.unsplash.com/photo-1670442455839-9192c0aef59e?ixlib=rb-1.2.1&auto=format&fit=crop&w=60&h=60&q=80",
       team2Logo: "https://images.unsplash.com/photo-1580802527985-88e1f52b4fd1?ixlib=rb-1.2.1&auto=format&fit=crop&w=60&h=60&q=80",
-      matchType: "T20",
+      matchType: "IPL",
       startTime: match2StartTime,
       tagText: "HOT",
       tagColor: "#ffc107"
+    });
+    
+    const match3StartTime = new Date(now.getTime() + 8 * 60 * 60 * 1000); // 8 hours from now
+    
+    this.createMatch({
+      team1: "India",
+      team2: "Australia",
+      team1Code: "IND",
+      team2Code: "AUS",
+      team1Logo: "https://images.unsplash.com/photo-1594750852612-29bab67b3d87?ixlib=rb-1.2.1&auto=format&fit=crop&w=60&h=60&q=80",
+      team2Logo: "https://images.unsplash.com/photo-1623053523468-1bf0e2397a85?ixlib=rb-1.2.1&auto=format&fit=crop&w=60&h=60&q=80",
+      matchType: "ODI",
+      startTime: match3StartTime,
+      tagText: "INTL",
+      tagColor: "#2196f3"
+    });
+    
+    const match4StartTime = new Date(now.getTime() + 24 * 60 * 60 * 1000); // 24 hours from now
+    
+    this.createMatch({
+      team1: "England",
+      team2: "New Zealand",
+      team1Code: "ENG",
+      team2Code: "NZ",
+      team1Logo: "https://images.unsplash.com/photo-1548021837-5478fbd36b8e?ixlib=rb-1.2.1&auto=format&fit=crop&w=60&h=60&q=80",
+      team2Logo: "https://images.unsplash.com/photo-1463425522303-157219c489bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=60&h=60&q=80",
+      matchType: "TEST",
+      startTime: match4StartTime,
+      tagText: "INTL",
+      tagColor: "#4caf50"
     });
     
     // Seed players for CSK
@@ -542,6 +572,88 @@ export class MemStorage implements IStorage {
       isGuaranteed: true,
       contestType: "SMALL",
       headerColor: "#1f2833"
+    });
+    
+    // Seed players for India
+    this.createPlayer({
+      name: "Virat Kohli",
+      teamCode: "IND",
+      role: "BAT",
+      credits: 10.0,
+      points: 0,
+      selectionPercentage: 95,
+      lastMatchPoints: 87,
+      imageUrl: "https://images.unsplash.com/photo-1535813547-3e2a11a620db?ixlib=rb-1.2.1&auto=format&fit=crop&w=60&h=60&q=80"
+    });
+    
+    this.createPlayer({
+      name: "Rohit Sharma",
+      teamCode: "IND",
+      role: "BAT",
+      credits: 9.5,
+      points: 0,
+      selectionPercentage: 90,
+      lastMatchPoints: 76,
+      imageUrl: "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixlib=rb-1.2.1&auto=format&fit=crop&w=60&h=60&q=80"
+    });
+    
+    this.createPlayer({
+      name: "Jasprit Bumrah",
+      teamCode: "IND",
+      role: "BOWL",
+      credits: 9.0,
+      points: 0,
+      selectionPercentage: 88,
+      lastMatchPoints: 65,
+      imageUrl: "https://images.unsplash.com/photo-1534308143481-c55f00be8bd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=60&h=60&q=80"
+    });
+    
+    // Seed players for Australia
+    this.createPlayer({
+      name: "Steve Smith",
+      teamCode: "AUS",
+      role: "BAT",
+      credits: 9.5,
+      points: 0,
+      selectionPercentage: 85,
+      lastMatchPoints: 72,
+      imageUrl: "https://images.unsplash.com/photo-1547975041-0bd3bc314dab?ixlib=rb-1.2.1&auto=format&fit=crop&w=60&h=60&q=80"
+    });
+    
+    this.createPlayer({
+      name: "Pat Cummins",
+      teamCode: "AUS",
+      role: "BOWL",
+      credits: 9.0,
+      points: 0,
+      selectionPercentage: 82,
+      lastMatchPoints: 55,
+      imageUrl: "https://images.unsplash.com/photo-1551858920-9e282b442f2f?ixlib=rb-1.2.1&auto=format&fit=crop&w=60&h=60&q=80"
+    });
+    
+    // Seed contests for all matches
+    this.createContest({
+      matchId: 3,
+      name: "ODI World Cup Contest",
+      entryFee: 99,
+      totalSpots: 1500000,
+      prizePool: 80000000, // 8 crores
+      firstPrize: 5000000, // 50 lakhs
+      isGuaranteed: true,
+      contestType: "MEGA",
+      headerColor: "#2196f3"
+    });
+    
+    this.createContest({
+      matchId: 4,
+      name: "Test Championship Special",
+      entryFee: 199,
+      totalSpots: 500000,
+      prizePool: 50000000, // 5 crores
+      firstPrize: 3000000, // 30 lakhs
+      isGuaranteed: true,
+      contestType: "MEGA",
+      headerColor: "#4caf50"
     });
     
     // Seed winners
