@@ -29,7 +29,22 @@ export default function PlayerCard({
       case "MI": return "#004ba0";
       case "RCB": return "#d13239";
       case "DC": return "#0078bc";
+      case "IND": return "#0078bc";
+      case "AUS": return "#ffcd00";
+      case "ENG": return "#cf142b";
+      case "NZ": return "#000000";
       default: return "#1f2833";
+    }
+  };
+  
+  // Define player role display text
+  const getRoleDisplay = (role: string) => {
+    switch (role) {
+      case "WK": return "Wicket Keeper";
+      case "BAT": return "Batsman";
+      case "BOWL": return "Bowler";
+      case "AR": return "All Rounder";
+      default: return role;
     }
   };
 
@@ -53,7 +68,11 @@ export default function PlayerCard({
               {player.teamCode}
             </span>
           </div>
-          <p className="text-xs text-gray-500">Last Match: {player.lastMatchPoints} pts</p>
+          <div className="flex gap-2 text-xs text-gray-500">
+            <span>{getRoleDisplay(player.role)}</span>
+            <span>•</span>
+            <span>Last Match: {player.lastMatchPoints} pts</span>
+          </div>
         </div>
       </div>
       

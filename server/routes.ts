@@ -464,6 +464,121 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.status(500).json({ error: "Failed to fetch user winners" });
     }
   });
+  
+  // Cricket specific endpoints
+  
+  // Get cricket player stats
+  app.get("/api/cricket/player/:id/stats", async (req, res) => {
+    try {
+      const playerId = parseInt(req.params.id);
+      const player = await storage.getPlayer(playerId);
+      
+      if (!player) {
+        return res.status(404).json({ error: "Player not found" });
+      }
+      
+      // Generate cricket-specific stats based on the player's role
+      let stats = {};
+      
+      switch(player.role) {
+        case "BAT":
+          stats = {
+            matches: Math.floor(Math.random() * 200) + 20,
+            innings: Math.floor(Math.random() * 180) + 20,
+            runs: Math.floor(Math.random() * 10000) + 500,
+            average: (Math.random() * 50 + 20).toFixed(2),
+            strikeRate: (Math.random() * 100 + 50).toFixed(2),
+            hundreds: Math.floor(Math.random() * 30),
+            fifties: Math.floor(Math.random() * 50),
+            highestScore: Math.floor(Math.random() * 200) + 50
+          };
+          break;
+        case "BOWL":
+          stats = {
+            matches: Math.floor(Math.random() * 200) + 20,
+            innings: Math.floor(Math.random() * 180) + 20,
+            wickets: Math.floor(Math.random() * 300) + 50,
+            economy: (Math.random() * 5 + 2).toFixed(2),
+            average: (Math.random() * 30 + 15).toFixed(2),
+            fiveWickets: Math.floor(Math.random() * 10),
+            bestBowling: `${Math.floor(Math.random() * 7) + 3}/${Math.floor(Math.random() * 30) + 10}`
+          };
+          break;
+        case "AR":
+          stats = {
+            // Batting
+            battingInnings: Math.floor(Math.random() * 150) + 20,
+            runs: Math.floor(Math.random() * 5000) + 500,
+            battingAverage: (Math.random() * 40 + 20).toFixed(2),
+            battingStrikeRate: (Math.random() * 100 + 50).toFixed(2),
+            hundreds: Math.floor(Math.random() * 10),
+            fifties: Math.floor(Math.random() * 30),
+            
+            // Bowling
+            bowlingInnings: Math.floor(Math.random() * 150) + 20,
+            wickets: Math.floor(Math.random() * 200) + 50,
+            economy: (Math.random() * 5 + 3).toFixed(2),
+            bowlingAverage: (Math.random() * 30 + 20).toFixed(2)
+          };
+          break;
+        case "WK":
+          stats = {
+            matches: Math.floor(Math.random() * 200) + 20,
+            innings: Math.floor(Math.random() * 180) + 20,
+            runs: Math.floor(Math.random() * 8000) + 500,
+            average: (Math.random() * 40 + 20).toFixed(2),
+            strikeRate: (Math.random() * 100 + 60).toFixed(2),
+            dismissals: Math.floor(Math.random() * 300) + 50,
+            catches: Math.floor(Math.random() * 200) + 40,
+            stumpings: Math.floor(Math.random() * 100) + 10
+          };
+          break;
+      }
+      
+      res.json({
+        player,
+        stats
+      });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch player stats" });
+    }
+  });
+  
+  // Get cricket match statistics
+  app.get("/api/cricket/match/:id/stats", async (req, res) => {
+    try {
+      const matchId = parseInt(req.params.id);
+      const match = await storage.getMatch(matchId);
+      
+      if (!match) {
+        return res.status(404).json({ error: "Match not found" });
+      }
+      
+      // For demo purposes, generate random match stats
+      const team1Score = `${Math.floor(Math.random() * 250) + 100}/${Math.floor(Math.random() * 10)}`;
+      const team2Score = match.isCompleted ? 
+        `${Math.floor(Math.random() * 250) + 100}/${Math.floor(Math.random() * 10)}` : 
+        "Yet to bat";
+        
+      const matchStats = {
+        matchStatus: match.isCompleted ? "Completed" : (match.isLive ? "Live" : "Upcoming"),
+        team1Score,
+        team2Score,
+        currentRunRate: match.isLive ? (Math.random() * 10 + 3).toFixed(2) : null,
+        requiredRunRate: match.isLive ? (Math.random() * 12 + 6).toFixed(2) : null,
+        venue: ["Mumbai", "Chennai", "Kolkata", "Delhi", "Bangalore"][Math.floor(Math.random() * 5)],
+        weatherConditions: ["Sunny", "Clear", "Cloudy", "Light Rain", "Hot and Humid"][Math.floor(Math.random() * 5)],
+        pitchReport: ["Batting friendly", "Good for fast bowlers", "Spin-friendly", "Even contest between bat and ball"][Math.floor(Math.random() * 4)]
+      };
+      
+      res.json({
+        match,
+        matchStats
+      });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch match stats" });
+    }
+  });
 
   const httpServer = createServer(app);
   return httpServer;

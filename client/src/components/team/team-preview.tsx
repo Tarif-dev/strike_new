@@ -49,6 +49,10 @@ export default function TeamPreview({
       case "MI": return "#004ba0";
       case "RCB": return "#d13239";
       case "DC": return "#0078bc";
+      case "IND": return "#0078bc";
+      case "AUS": return "#ffcd00";
+      case "ENG": return "#cf142b";
+      case "NZ": return "#000000";
       default: return "#1f2833";
     }
   };
