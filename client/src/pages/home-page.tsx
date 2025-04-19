@@ -12,7 +12,7 @@ import { Match } from "@shared/schema";
 
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState("home");
-  const [activeSport, setActiveSport] = useState("cricket");
+  const [activeSport, setActiveSport] = useState("all");
   
   // Fetch upcoming matches
   const { data: matches, isLoading: isLoadingMatches } = useQuery<Match[]>({
@@ -33,31 +33,31 @@ export default function HomePage() {
     { id: "more", label: "More" }
   ];
   
-  // Define sports
+  // Define cricket formats
   const sports = [
-    { id: "cricket", name: "Cricket" },
-    { id: "football", name: "Football" },
-    { id: "basketball", name: "Basketball" },
-    { id: "baseball", name: "Baseball" },
-    { id: "hockey", name: "Hockey" }
+    { id: "all", name: "All Matches" },
+    { id: "ipl", name: "IPL" },
+    { id: "t20", name: "T20" },
+    { id: "odi", name: "ODI" },
+    { id: "test", name: "Test" }
   ];
   
-  // Banner data
+  // Cricket Banner data
   const banners = [
     {
       id: 1,
-      imageUrl: "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=160&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1531415074968-036ba1b575da?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=160&q=80",
       altText: "Fantasy Cricket Banner"
     },
     {
       id: 2,
-      imageUrl: "https://images.unsplash.com/photo-1580802527985-88e1f52b4fd1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=160&q=80",
-      altText: "IPL Banner" 
+      imageUrl: "https://images.unsplash.com/photo-1593766788306-28561585c27c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=160&q=80",
+      altText: "IPL 2025 Mega Contest" 
     },
     {
       id: 3,
-      imageUrl: "https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=160&q=80",
-      altText: "T20 Banner"
+      imageUrl: "https://images.unsplash.com/photo-1664442945485-8c449d4ea710?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=160&q=80",
+      altText: "Cricket World Cup Contest"
     }
   ];
   
@@ -80,9 +80,9 @@ export default function HomePage() {
           onSportChange={(sportId) => setActiveSport(sportId)}
         />
         
-        {/* Featured Matches */}
+        {/* Featured Cricket Matches */}
         <div className="py-3 px-4">
-          <h2 className="text-lg font-['Roboto_Condensed'] font-bold mb-3">Featured Matches</h2>
+          <h2 className="text-lg font-['Roboto_Condensed'] font-bold mb-3">Featured Cricket Matches</h2>
           
           {isLoadingMatches ? (
             <div className="space-y-4">

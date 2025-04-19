@@ -77,8 +77,8 @@ export default function AuthPage() {
       {/* Hero Section */}
       <div className="bg-[#d13239] text-white p-8 flex flex-col justify-center md:w-1/2">
         <div className="max-w-lg mx-auto">
-          <h1 className="text-4xl font-bold mb-4 font-['Roboto_Condensed']">Dream11</h1>
-          <p className="text-xl mb-6">India's Biggest Fantasy Sports Platform</p>
+          <h1 className="text-4xl font-bold mb-4 font-['Roboto_Condensed']">Cricket11</h1>
+          <p className="text-xl mb-6">India's Biggest Fantasy Cricket Platform</p>
           <div className="space-y-4">
             <div className="flex items-start">
               <div className="bg-white bg-opacity-20 p-2 rounded-full mr-3">
@@ -94,8 +94,8 @@ export default function AuthPage() {
                 <i className="fas fa-users"></i>
               </div>
               <div>
-                <h3 className="text-lg font-medium">Join Millions</h3>
-                <p className="text-sm opacity-80">Play with fantasy sports fans across India</p>
+                <h3 className="text-lg font-medium">Cricket Fever</h3>
+                <p className="text-sm opacity-80">Play with millions of cricket fans across India</p>
               </div>
             </div>
             <div className="flex items-start">
@@ -116,7 +116,7 @@ export default function AuthPage() {
         <div className="w-full max-w-md">
           <Card>
             <CardHeader>
-              <CardTitle className="text-2xl text-center">Welcome to Dream11</CardTitle>
+              <CardTitle className="text-2xl text-center">Welcome to Cricket11</CardTitle>
               <CardDescription className="text-center">
                 {activeTab === "login" 
                   ? "Sign in to your account" 
