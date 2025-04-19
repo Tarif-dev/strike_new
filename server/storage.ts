@@ -203,7 +203,14 @@ export class MemStorage implements IStorage {
   
   async createPlayer(player: InsertPlayer): Promise<Player> {
     const id = this.currentPlayerId++;
-    const newPlayer: Player = { ...player, id };
+    const newPlayer: Player = { 
+      ...player, 
+      id,
+      points: player.points || 0,
+      selectionPercentage: player.selectionPercentage || 0,
+      lastMatchPoints: player.lastMatchPoints || 0,
+      imageUrl: player.imageUrl || null
+    };
     this.players.set(id, newPlayer);
     return newPlayer;
   }
@@ -241,6 +248,10 @@ export class MemStorage implements IStorage {
     const newMatch: Match = { 
       ...match, 
       id,
+      team1Logo: match.team1Logo || null,
+      team2Logo: match.team2Logo || null,
+      tagText: match.tagText || null,
+      tagColor: match.tagColor || null,
       isLive: false,
       isCompleted: false
     };
@@ -337,7 +348,9 @@ export class MemStorage implements IStorage {
     const newContest: Contest = { 
       ...contest, 
       id,
-      filledSpots: 0
+      filledSpots: 0,
+      isGuaranteed: contest.isGuaranteed || false,
+      headerColor: contest.headerColor || "#1f2833"
     };
     this.contests.set(id, newContest);
     return newContest;
